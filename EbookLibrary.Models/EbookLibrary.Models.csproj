@@ -41,6 +41,9 @@
   <ItemGroup>
     <Compile Include="Book.cs" />
     <Compile Include="Category.cs" />
+    <Compile Include="CustomAttributes\PropertyAttribute.cs" />
+    <Compile Include="CustomAttributes\SchemaAttribute.cs" />
+    <Compile Include="IDBEntity.cs" />
     <Compile Include="Library.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
