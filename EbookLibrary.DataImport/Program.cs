@@ -20,7 +20,7 @@ namespace EbookLibrary.DataImport
             ScriptRunner runner = new ScriptRunner();
             Task.Run(async () =>
             {
-                await runner.RunScript("books-import");
+                await runner.RunScript("books-rdf-import");
             }).Wait();
         }
     }
