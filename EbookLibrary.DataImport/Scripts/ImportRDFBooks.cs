@@ -15,6 +15,8 @@ namespace EbookLibrary.DataImport.Scripts
     [Script("books-rdf-import")]
     public class ImportRDFBooks : IScript
     {
+        private object dblock = new object();
+
         private IMongoDatabase db;
         private IMongoDatabase DB
         {
@@ -65,7 +67,10 @@ namespace EbookLibrary.DataImport.Scripts
                         book_doc.Add("title", title);
                         book_doc.Add("author", author);
                         book_doc.Add("book_category", category);
-                        book_collection.ReplaceOne(filter, book_doc, new UpdateOptions { IsUpsert = true });
+                        lock (dblock)
+                        {
+                            book_collection.ReplaceOne(filter, book_doc, new UpdateOptions { IsUpsert = true });
+                        }
                         Console.WriteLine(string.Format("Book {0} updated", title));
                     });
                 }
